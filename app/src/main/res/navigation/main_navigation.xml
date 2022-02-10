@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/buildFragment">
+
+    <fragment
+        android:id="@+id/buildFragment"
+        android:name="org.wit.mad2_project.fragments.BuildFragment"
+        android:label="fragment_build"
+        tools:layout="@layout/fragment_build" >
+        <action
+            android:id="@+id/action_buildFragment_to_buildListFragment"
+            app:destination="@id/buildListFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_buildFragment_to_itemFragment"
+            app:destination="@id/itemFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/buildListFragment"
+        android:name="org.wit.mad2_project.fragments.BuildListFragment"
+        android:label="fragment_build_list"
+        tools:layout="@layout/fragment_buildlist" >
+        <action
+            android:id="@+id/action_buildListFragment_to_buildFragment"
+            app:destination="@id/buildFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemFragment"
+        android:name="org.wit.mad2_project.itemFragment"
+        android:label="fragment_item"
+        tools:layout="@layout/fragment_item" >
+        <action
+            android:id="@+id/action_itemFragment_to_buildFragment"
+            app:destination="@id/buildFragment" />
+    </fragment>
+</navigation>

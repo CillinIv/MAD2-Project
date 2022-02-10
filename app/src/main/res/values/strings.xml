@@ -1,3 +1,49 @@
 <resources>
-    <string name="app_name">MAD2-Project</string>
+    <string name="app_name">Build Share</string>
+    <string name="weight">Weight</string>
+    <string name="glyph">Glyph</string>
+    <string name="trait">Trait</string>
+    <string name="itemName">Item Set</string>
+    <string name="enterItem">Enter Item Name</string>
+    <string name="saveBuild">Save Build</string>
+    <string name="buildTitle">Build Title</string>
+    <string name="build">Build</string>
+    <string name="buildList">Builds</string>
+
+
+    <string name="itemHead">Head Slot</string>
+    <string name="itemShoulder">Shoulder Slot</string>
+    <string name="itemChest">Chest Slot</string>
+    <string name="itemLegs">Legs Slot</string>
+    <string name="itemHands">Hands Slot</string>
+    <string name="itemWaist">Waist Slot</string>
+    <string name="itemBoots">Boots Slot</string>
+
+    <string name="itemJewel">Jewelry Slot</string>
+
+    <string name="itemNeck">Neck Slot</string>
+    <string name="itemRing">Ring Slot</string>
+    <string name="itemWep">Weapon Slot</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nav_header_title">Title test</string>
+    <string name="nav_header_subtitle">user name</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+
+    <!--
+    <string name="app_name"></string>
+    <string name="app_name"></string>
+    <string name="app_name"></string>
+    <string name="app_name"></string>
+    <string name="app_name"></string>
+    <string name="app_name"></string>
+    <string name="app_name"></string>
+    <string name="app_name"></string>
+    <string name="app_name"></string>
+    -->
+
+
 </resources>
