@@ -3,13 +3,15 @@
     <string name="weight">Weight</string>
     <string name="glyph">Glyph</string>
     <string name="trait">Trait</string>
+    <string name="quality">Quality</string>
     <string name="itemName">Item Set</string>
     <string name="enterItem">Enter Item Name</string>
+    <string name="saveItem">Save Item</string>
     <string name="saveBuild">Save Build</string>
     <string name="buildTitle">Build Title</string>
     <string name="build">Build</string>
     <string name="buildList">Builds</string>
-
+    <string name="daily">Daily</string>
 
     <string name="itemHead">Head Slot</string>
     <string name="itemShoulder">Shoulder Slot</string>
@@ -24,6 +26,99 @@
     <string name="itemNeck">Neck Slot</string>
     <string name="itemRing">Ring Slot</string>
     <string name="itemWep">Weapon Slot</string>
+
+    <string-array name="traitsArmor">
+        <item>Divines</item>
+        <item>Invigorating</item>
+        <item>Impenetrable</item>
+        <item>Infused</item>
+        <item>Nirnhoned</item>
+        <item>Reinforced</item>
+        <item>Sturdy</item>
+        <item>Training</item>
+        <item>Well-Fitted</item>
+    </string-array>
+
+
+    <string-array name="traitsWeapon">
+        <item>Charged</item>
+        <item>Defending</item>
+        <item>Infused</item>
+        <item>Nirnhoned</item>
+        <item>Powered</item>
+        <item>Precise</item>
+        <item>Sharpened</item>
+        <item>Training</item>
+        <item>Decisive</item>
+    </string-array>
+
+    <string-array name="traitsJewel">
+        <item>Bloodythirsty</item>
+        <item>Harmony</item>
+        <item>Healthy</item>
+        <item>Infused</item>
+        <item>Protective</item>
+        <item>Robust</item>
+        <item>Swift</item>
+        <item>Triune</item>
+    </string-array>
+
+    <string-array name="weights">
+        <item>Light</item>
+        <item>Medium</item>
+        <item>Heavy</item>
+    </string-array>
+
+
+    <string-array name="glpyhsArmor">
+        <item>Health</item>
+        <item>Magicka</item>
+        <item>Stamina</item>
+        <item>Prismatic</item>
+    </string-array>
+
+
+    <string-array name="glpyhsJewel">
+        <item>Increase Physical Harm</item>
+        <item>Increase Magical Harm</item>
+        <item>Health Recovery</item>
+        <item>Magicka Recovery</item>
+        <item>Stamina Recovery</item>
+        <item>Reduce Spell Cost</item>
+        <item>Reduce Feat Cost</item>
+        <item>Shielding</item>
+        <item>Bashing</item>
+        <item>Decrease Physical Harm</item>
+        <item>Decrease Spell Harm</item>
+        <item>Flame Resist</item>
+        <item>Frost Resist</item>
+        <item>Shock Resist</item>
+        <item>Poison Resist</item>
+        <item>Disease Resist</item>
+        <item>Poison Resist</item>
+        <item>Disease Resist</item>
+        <item>Potion Resist</item>
+        <item>Potion Boost</item>
+        <item>Reduce Skill Cost</item>
+        <item>Prismatic Recovery</item>
+    </string-array>
+
+
+    <string-array name="glpyhsWeapon">
+        <item>Fire</item>
+        <item>Frost</item>
+        <item>Shock</item>
+        <item>Poison</item>
+        <item>Foulness</item>
+        <item>Decrease Health</item>
+        <item>Hardening</item>
+        <item>Absorb Health</item>
+        <item>Absorb Magicka</item>
+        <item>Weapon Damage</item>
+        <item>Weakening</item>
+        <item>Crushing</item>
+        <item>Prismatic Onslaught</item>
+    </string-array>
 
 
     <!-- TODO: Remove or change this placeholder text -->

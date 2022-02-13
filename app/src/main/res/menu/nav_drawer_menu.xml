@@ -6,12 +6,16 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/buildFragment"
-            android:icon="@drawable/ic_baseline_assignment_ind_24"
+            android:icon="@drawable/templar_icon"
             android:title="@string/build" />
         <item
             android:id="@+id/buildListFragment"
-            android:icon="@drawable/ic_baseline_list_24"
+            android:icon="@drawable/dk_icon"
             android:title="@string/buildList" />
+        <item
+            android:id="@+id/dailyFragment"
+            android:icon="@drawable/sorc_icon"
+            android:title="@string/daily" />
     </group>
 <!--
     <item android:title="@string/group_communicate">

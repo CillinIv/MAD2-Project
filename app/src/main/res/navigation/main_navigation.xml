@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
+    android:label="New Item"
     app:startDestination="@id/buildFragment">
 
     <fragment
         android:id="@+id/buildFragment"
         android:name="org.wit.mad2_project.fragments.BuildFragment"
-        android:label="fragment_build"
-        tools:layout="@layout/fragment_build" >
+        android:label="Build"
+        tools:layout="@layout/fragment_build">
         <action
             android:id="@+id/action_buildFragment_to_buildListFragment"
             app:destination="@id/buildListFragment"
@@ -17,14 +18,19 @@
             app:exitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_buildFragment_to_itemFragment"
-            app:destination="@id/itemFragment" />
+            app:destination="@id/itemFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_buildFragment_to_dailyFragment2"
+            app:destination="@id/dailyFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/buildListFragment"
         android:name="org.wit.mad2_project.fragments.BuildListFragment"
-        android:label="fragment_build_list"
-        tools:layout="@layout/fragment_buildlist" >
+        android:label="Builds"
+        tools:layout="@layout/fragment_buildlist">
         <action
             android:id="@+id/action_buildListFragment_to_buildFragment"
             app:destination="@id/buildFragment"
@@ -35,9 +41,18 @@
         android:id="@+id/itemFragment"
         android:name="org.wit.mad2_project.itemFragment"
         android:label="fragment_item"
-        tools:layout="@layout/fragment_item" >
+        tools:layout="@layout/fragment_item">
         <action
             android:id="@+id/action_itemFragment_to_buildFragment"
+            app:destination="@id/buildFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dailyFragment"
+        android:name="org.wit.mad2_project.fragments.DailyFragment"
+        android:label="Dailies"
+        tools:layout="@layout/fragment_daily">
+        <action
+            android:id="@+id/action_dailyFragment2_to_buildFragment"
             app:destination="@id/buildFragment" />
     </fragment>
 </navigation>

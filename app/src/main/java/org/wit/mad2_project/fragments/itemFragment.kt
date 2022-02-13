@@ -5,6 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import org.wit.mad2_project.R
+import org.wit.mad2_project.databinding.FragmentItemBinding
+import org.wit.mad2_project.main.BuildApp
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +26,13 @@ class itemFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    lateinit var app: BuildApp
+    var totalDonated = 0
+    private var _fragBinding: FragmentItemBinding? = null
+    private val fragBinding get() = _fragBinding!!
+
+    val spinnerArray = R.array.traitsWeapon
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -33,9 +45,28 @@ class itemFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_item, container, false)
+
+        _fragBinding = FragmentItemBinding.inflate(inflater, container, false)
+        val root = fragBinding.root
+        activity?.title = getString(R.string.build)
+
+
+        val spinner: Spinner = fragBinding.trait
+
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            spinnerArray,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinner.adapter = adapter
+
+            return root
+        }
     }
+
 
     companion object {
         /**

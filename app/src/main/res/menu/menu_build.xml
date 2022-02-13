@@ -7,4 +7,11 @@
         android:orderInCategory="100"
         android:title="@string/buildTitle"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/dailyFragment"
+        android:orderInCategory="100"
+        android:title="@string/daily"
+        app:showAsAction="never" />
+
 </menu>

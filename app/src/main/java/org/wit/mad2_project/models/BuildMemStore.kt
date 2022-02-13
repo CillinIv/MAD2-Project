@@ -9,25 +9,25 @@ internal fun getId(): Long {
 
 class BuildMemStore : BuildStore {
 
-    val donations = ArrayList<BuildModel>()
+    val builds = ArrayList<BuildModel>()
 
     override fun findAll(): List<BuildModel> {
-        return donations
+        return builds
     }
 
     override fun findById(id:Long) : BuildModel? {
-        val foundDonation: BuildModel? = donations.find { it.id == id }
-        return foundDonation
+        val foundBuild: BuildModel? = builds.find { it.id == id }
+        return foundBuild
     }
 
-    override fun create(donation: BuildModel) {
-        donation.id = getId()
-        donations.add(donation)
+    override fun create(build: BuildModel) {
+        build.id = getId()
+        builds.add(build)
         logAll()
     }
 
     fun logAll() {
-        Timber.v("** Donations List **")
-        donations.forEach { Timber.v("Donate ${it}") }
+        Timber.v("** Build List **")
+        builds.forEach { Timber.v("Donate ${it}") }
     }
 }

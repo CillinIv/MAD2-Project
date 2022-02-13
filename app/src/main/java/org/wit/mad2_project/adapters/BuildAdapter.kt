@@ -27,8 +27,8 @@ class BuildAdapter constructor(private var builds: List<BuildModel>)
     inner class MainHolder(val binding : CardBuildBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(build: BuildModel) {
-            binding.paymentamount.text = build.amount.toString()
-            binding.buildTitle.text = build.paymentmethod
+            //binding.paymentamount.text = build.amount.toString()
+            //binding.buildTitle.text = build.paymentmethod
             binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
         }
     }
