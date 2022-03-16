@@ -24,6 +24,24 @@
         <action
             android:id="@+id/action_buildFragment_to_dailyFragment2"
             app:destination="@id/dailyFragment" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="trait"
+            app:argType="string" />
+        <argument
+            android:name="glyph"
+            app:argType="string" />
+        <argument
+            android:name="quality"
+            app:argType="integer" />
+        <argument
+            android:name="weight"
+            app:argType="string" />
+        <argument
+            android:name="build"
+            app:argType="org.wit.mad2_project.models.BuildModel" />
     </fragment>
 
     <fragment
@@ -39,12 +57,21 @@
     </fragment>
     <fragment
         android:id="@+id/itemFragment"
-        android:name="org.wit.mad2_project.itemFragment"
+        android:name="org.wit.mad2_project.fragments.itemFragment"
         android:label="fragment_item"
         tools:layout="@layout/fragment_item">
         <action
             android:id="@+id/action_itemFragment_to_buildFragment"
             app:destination="@id/buildFragment" />
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="slot"
+            app:argType="string" />
+        <argument
+            android:name="build"
+            app:argType="org.wit.mad2_project.models.BuildModel" />
     </fragment>
     <fragment
         android:id="@+id/dailyFragment"

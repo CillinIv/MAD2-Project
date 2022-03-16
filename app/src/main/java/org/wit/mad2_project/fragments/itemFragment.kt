@@ -6,39 +6,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.NumberPicker
 import android.widget.Spinner
+import androidx.navigation.fragment.findNavController
 import org.wit.mad2_project.R
 import org.wit.mad2_project.databinding.FragmentItemBinding
 import org.wit.mad2_project.main.BuildApp
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [itemFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class itemFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
+    private var type: String = ""
+    private var slot: String = ""
     lateinit var app: BuildApp
     var totalDonated = 0
     private var _fragBinding: FragmentItemBinding? = null
     private val fragBinding get() = _fragBinding!!
 
-    val spinnerArray = R.array.traitsWeapon
-
+    var spinnerArrayTrait = R.array.traitsWeapon
+    var spinnerArrayGlyph = R.array.glpyhsWeapon
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -50,41 +40,100 @@ class itemFragment : Fragment() {
         val root = fragBinding.root
         activity?.title = getString(R.string.build)
 
+        val bundle = arguments
+        type = bundle?.getString("type")!!
+        slot = bundle?.getString("slot")!!
 
-        val spinner: Spinner = fragBinding.trait
+        //getParcelable("type")
+
+        val traitSpinner: Spinner = fragBinding.trait
+        val glyphSpinner: Spinner = fragBinding.glyph
+        val weightSpinner: Spinner = fragBinding.weight
+
+
+        if(type == "armor"){
+            spinnerArrayTrait = R.array.traitsArmor
+            spinnerArrayGlyph = R.array.glpyhsArmor
+        }
+        if(type == "jewel"){
+            spinnerArrayTrait = R.array.traitsJewel
+            spinnerArrayGlyph = R.array.glpyhsJewel
+            fragBinding.weight.isEnabled = false
+        }
+        if(type == "wep"){
+            spinnerArrayTrait = R.array.traitsWeapon
+            spinnerArrayGlyph = R.array.glpyhsWeapon
+            fragBinding.weight.isEnabled = false
+        }
+
+
+
 
         ArrayAdapter.createFromResource(
             requireContext(),
-            spinnerArray,
+            spinnerArrayTrait,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             // Specify the layout to use when the list of choices appears
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             // Apply the adapter to the spinner
-            spinner.adapter = adapter
-
-            return root
+            traitSpinner.adapter = adapter
         }
+
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            spinnerArrayGlyph,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            glyphSpinner.adapter = adapter
+        }
+
+        if(type == "armor"){
+            ArrayAdapter.createFromResource(
+                requireContext(),
+                R.array.weights,
+                android.R.layout.simple_spinner_item
+            ).also { adapter ->
+                // Specify the layout to use when the list of choices appears
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                // Apply the adapter to the spinner
+                weightSpinner.adapter = adapter
+            }
+        }
+
+        val numberPicker: NumberPicker = fragBinding.quality
+        numberPicker.minValue = 1
+        numberPicker.maxValue = 5
+        //val quality = [1,2,3,4,5]
+        //numberPicker.setDisplayedValues(quality)
+
+        fragBinding.saveItem.setOnClickListener() {
+            val name: String = fragBinding.itemName.toString()
+            val trait: String = fragBinding.trait.toString()
+            val glyph: String = fragBinding.glyph.toString()
+            val quality: Int = fragBinding.quality.value
+
+            if(type == "armor"){
+                val weight: String = fragBinding.weight.toString()
+                val action = itemFragmentDirections.actionItemFragmentToBuildFragment(name, trait, glyph, quality, weight)
+                findNavController().navigate(action)
+            }else{
+                val action = itemFragmentDirections.actionItemFragmentToBuildFragment(name, trait, glyph, quality, "")
+                findNavController().navigate(action)
+            }
+
+
+
+        }
+
+        return root
     }
 
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment itemFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            itemFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
     }
 }
