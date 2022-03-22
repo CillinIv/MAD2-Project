@@ -213,7 +213,7 @@ class BuildFragment : Fragment() {
 
         fragBinding.handOpt.setOnClickListener(){
             var type: String = "armor"
-            var slot : String = "head"
+            var slot : String = "hand"
             val action = BuildFragmentDirections.actionBuildFragmentToItemFragment(type,slot,currentBuild)
             findNavController().navigate(action)
         }
@@ -281,44 +281,107 @@ class BuildFragment : Fragment() {
         super.onDestroyView()
         _fragBinding = null
     }
-
+    var one = 0
     override fun onResume() {
         super.onResume()
-        val bundle = arguments
+        val bundle = arguments ?: return
+
+        if(one == 0){
+            one++
+            return
+        }
+
+        currentBuild = bundle?.getParcelable("build")!!
 
         if(bundle?.getString("slot") == "head"){
-            newHeadSlot = bundle?.getString("name").toString()
-            newHeadWeight = bundle?.getString("weight").toString()
-            newHeadEnch = bundle?.getString("glyph").toString()
-            newHeadTrait = bundle?.getString("trait").toString()
-            newHeadQuality = bundle?.getInt("quality")
-
-
-        }else{
-            newHeadSlot = newHeadSlot
-            newHeadWeight = newHeadWeight
-            newHeadEnch = newHeadEnch
-            newHeadTrait = newHeadTrait
-            newHeadQuality = newHeadQuality
+            currentBuild.headSlot = bundle?.getString("name").toString()
+            currentBuild.headWeight = bundle?.getString("weight").toString()
+            currentBuild.headEnch = bundle?.getString("glyph").toString()
+            currentBuild.headTrait = bundle?.getString("trait").toString()
+            currentBuild.headQuality = bundle?.getInt("quality")!!
+        }else if(bundle?.getString("slot") == "shoulder"){
+            currentBuild.shoulderSlot = bundle?.getString("name").toString()
+            currentBuild.shoulderWeight = bundle?.getString("weight").toString()
+            currentBuild.shoulderEnch = bundle?.getString("glyph").toString()
+            currentBuild.shoulderTrait = bundle?.getString("trait").toString()
+            currentBuild.shoulderQuality = bundle?.getInt("quality")!!
+        }else if(bundle?.getString("slot") == "chest"){
+            currentBuild.chestSlot = bundle?.getString("name").toString()
+            currentBuild.chestWeight = bundle?.getString("weight").toString()
+            currentBuild.chestEnch = bundle?.getString("glyph").toString()
+            currentBuild.chestTrait = bundle?.getString("trait").toString()
+            currentBuild.chestQuality = bundle?.getInt("quality")!!
+        }else if(bundle?.getString("slot") == "hand"){
+            currentBuild.handSlot = bundle?.getString("name").toString()
+            currentBuild.handWeight = bundle?.getString("weight").toString()
+            currentBuild.handEnch = bundle?.getString("glyph").toString()
+            currentBuild.handTrait = bundle?.getString("trait").toString()
+            currentBuild.handQuality = bundle?.getInt("quality")!!
+        }else if(bundle?.getString("slot") == "waist"){
+            currentBuild.waistSlot = bundle?.getString("name").toString()
+            currentBuild.waistWeight = bundle?.getString("weight").toString()
+            currentBuild.waistEnch = bundle?.getString("glyph").toString()
+            currentBuild.waistTrait = bundle?.getString("trait").toString()
+            currentBuild.waistQuality = bundle?.getInt("quality")!!
+        }else if(bundle?.getString("slot") == "leg"){
+            currentBuild.legSlot = bundle?.getString("name").toString()
+            currentBuild.legWeight = bundle?.getString("weight").toString()
+            currentBuild.legEnch = bundle?.getString("glyph").toString()
+            currentBuild.legTrait = bundle?.getString("trait").toString()
+            currentBuild.legQuality = bundle?.getInt("quality")!!
+        }else if(bundle?.getString("slot") == "boots"){
+            currentBuild.bootSlot = bundle?.getString("name").toString()
+            currentBuild.bootWeight = bundle?.getString("weight").toString()
+            currentBuild.bootEnch = bundle?.getString("glyph").toString()
+            currentBuild.bootTrait = bundle?.getString("trait").toString()
+            currentBuild.bootQuality = bundle?.getInt("quality")!!
+        }else if(bundle?.getString("slot") == "neck"){
+            currentBuild.neckSlot = bundle?.getString("name").toString()
+            //currentBuild.bootWeight = bundle?.getString("weight").toString()
+            currentBuild.neckEnch = bundle?.getString("glyph").toString()
+            currentBuild.neckTrait = bundle?.getString("trait").toString()
+            currentBuild.neckQuality = bundle?.getInt("quality")!!
+        }else if(bundle?.getString("slot") == "ring1"){
+            currentBuild.ring1Slot = bundle?.getString("name").toString()
+            //currentBuild.bootWeight = bundle?.getString("weight").toString()
+            currentBuild.ring1Ench = bundle?.getString("glyph").toString()
+            currentBuild.ring1Trait = bundle?.getString("trait").toString()
+            currentBuild.ring1Quality = bundle?.getInt("quality")!!
+        }else if(bundle?.getString("slot") == "ring2"){
+            currentBuild.ring2Slot = bundle?.getString("name").toString()
+            //currentBuild.bootWeight = bundle?.getString("weight").toString()
+            currentBuild.ring2Ench = bundle?.getString("glyph").toString()
+            currentBuild.ring2Trait = bundle?.getString("trait").toString()
+            currentBuild.ring2Quality = bundle?.getInt("quality")!!
+        }else if(bundle?.getString("slot") == "wep1"){
+            currentBuild.frontSlot = bundle?.getString("name").toString()
+            currentBuild.frontType = bundle?.getString("weight").toString()
+            currentBuild.frontEnch = bundle?.getString("glyph").toString()
+            currentBuild.frontTrait = bundle?.getString("trait").toString()
+            currentBuild.frontQuality = bundle?.getInt("quality")!!
+        }else if(bundle?.getString("slot") == "wep2"){
+            currentBuild.backSlot = bundle?.getString("name").toString()
+            currentBuild.backType = bundle?.getString("weight").toString()
+            currentBuild.backEnch = bundle?.getString("glyph").toString()
+            currentBuild.backTrait = bundle?.getString("trait").toString()
+            currentBuild.backQuality = bundle?.getInt("quality")!!
         }
 
-        fragBinding.itemHeadView.text = newHeadSlot
 
-        if(bundle?.getString("slot") == "shoulder"){
-            newHeadSlot = bundle?.getString("name").toString()
-            newHeadWeight = bundle?.getString("weight").toString()
-            newHeadEnch = bundle?.getString("glyph").toString()
-            newHeadTrait = bundle?.getString("trait").toString()
-            newHeadQuality = bundle?.getInt("quality")
-        }else{
-            newShoulderSlot = newShoulderSlot
-            newShoulderWeight = newShoulderWeight
-            newShoulderEnch = newShoulderEnch
-            newShoulderTrait = newShoulderTrait
-            newShoulderQuality = newShoulderQuality
-        }
 
-        fragBinding.itemHeadView.text = newShoulderSlot
+        fragBinding.itemHeadView.text = currentBuild.headSlot
+        fragBinding.itemShoulderView.text = currentBuild.shoulderSlot
+        fragBinding.itemChestView.text = currentBuild.chestSlot
+        fragBinding.itemWaistView.text = currentBuild.waistSlot
+        fragBinding.itemHandsView.text = currentBuild.handSlot
+        fragBinding.itemLegView.text = currentBuild.legSlot
+        fragBinding.itemBootsView.text = currentBuild.bootSlot
+        //fragBinding.item.text = currentBuild.headSlot
+        //fragBinding.itemHeadView.text = currentBuild.headSlot
+        //fragBinding.itemHeadView.text = currentBuild.headSlot
+        fragBinding.itemFrontWepView.text = currentBuild.frontSlot
+        fragBinding.itemBackWepView.text = currentBuild.backSlot
+
 
 
 
