@@ -7,7 +7,7 @@ internal fun getId(): Long {
     return lastId++
 }
 
-class BuildMemStore : BuildStore {
+object BuildMemStore : BuildStore {
 
     val builds = ArrayList<BuildModel>()
 

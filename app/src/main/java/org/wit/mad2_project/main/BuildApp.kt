@@ -12,7 +12,7 @@ class BuildApp : Application() {
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
-        buildStore = BuildMemStore()
+        //buildStore = BuildMemStore()
         Timber.i("Starting App")
     }
 }

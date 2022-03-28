@@ -1,4 +1,4 @@
-package org.wit.mad2_project.fragments
+package org.wit.mad2_project.ui.build
 
 import android.os.Bundle
 import android.view.*
@@ -10,8 +10,12 @@ import org.wit.mad2_project.databinding.FragmentBuildBinding
 import org.wit.mad2_project.main.BuildApp
 import timber.log.Timber
 import android.view.View
+import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import org.wit.mad2_project.fragments.BuildFragmentDirections
 import org.wit.mad2_project.models.BuildModel
 
 var newBuildTitle: String = "N/A"
@@ -104,6 +108,9 @@ class BuildFragment : Fragment() {
     lateinit var app: BuildApp
     private var _fragBinding: FragmentBuildBinding? = null
     private val fragBinding get() = _fragBinding!!
+
+    private lateinit var buildViewModel: BuildViewModel
+
     private var currentBuild = BuildModel(-1, newBuildTitle,
     headSlot = newHeadSlot,
     headWeight = newHeadWeight,
@@ -190,6 +197,12 @@ class BuildFragment : Fragment() {
         _fragBinding = FragmentBuildBinding.inflate(inflater, container, false)
         val root = fragBinding.root
         activity?.title = newBuildTitle
+
+        buildViewModel = ViewModelProvider(this).get(BuildViewModel::class.java)
+        buildViewModel.observableBuild.observe(viewLifecycleOwner, Observer {
+                render()
+        })
+
         fragBinding.headOpt.setOnClickListener(){
             var type: String = "armor"
             var slot : String = "head"
@@ -474,40 +487,6 @@ class BuildFragment : Fragment() {
             //TODO Save build
             Timber.i("Saving build!")
         }
-
-        /*
-
-        layout.headOpt.setOnClickListener {
-            val action = BuildFragmentDirections.actionBuildFragmentToItemFragment()
-            findNavController().navigate(R.id.action_buildFragment_to_itemFragment)
-
-        }
-
-        layout.saveButton.setOnClickListener {
-            val action = BuildFragmentDirections.actionBuildFragmentToItemFragment()
-            findNavController().navigate(action)
-        }
-
-        layout.saveButton.setOnClickListener {
-            val action = BuildFragmentDirections.actionBuildFragmentToItemFragment()
-            findNavController().navigate(action)
-        }
-
-        layout.saveButton.setOnClickListener {
-            val action = BuildFragmentDirections.actionBuildFragmentToItemFragment()
-            findNavController().navigate(action)
-        }
-
-        layout.saveButton.setOnClickListener {
-            val action = BuildFragmentDirections.actionBuildFragmentToItemFragment()
-            findNavController().navigate(action)
-        }
-
-        layout.saveButton.setOnClickListener {
-            val action = BuildFragmentDirections.actionBuildFragmentToItemFragment()
-            findNavController().navigate(action)
-        }
-         */
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -518,6 +497,13 @@ class BuildFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item,
             requireView().findNavController()) || super.onOptionsItemSelected(item)
+    }
+
+    private fun render() {
+
+        view?.let {
+
+        }
     }
 
 

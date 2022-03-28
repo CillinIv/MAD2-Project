@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+        name = "build"
+        type = "org.wit.mad2_project.models.BuildModel"
+        />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.BuildFragment">
+    tools:context="ui.build.BuildFragment">
 
     <TextView
         android:id="@+id/buildTitle"
@@ -17,7 +27,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/buildTitle"
+        android:text="@={build.buildTitle}"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +82,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/itemHead"
+        android:text="@={build.headSlot}"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,7 +100,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/itemShoulder"
+        android:text="@={build.shoulderSlot}"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,7 +117,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/itemChest"
+        android:text="@={build.chestSlot}"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -124,7 +134,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/itemHands"
+        android:text="@={build.handSlot}"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -141,7 +151,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/itemWaist"
+        android:text="@={build.waistSlot}"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -159,7 +169,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/itemLegs"
+        android:text="@={build.legSlot}"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -176,7 +186,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/itemBoots"
+        android:text="@={build.bootSlot}"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -212,7 +222,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/itemWep"
+        android:text="@={build.frontSlot}"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -229,7 +239,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/itemWep"
+        android:text="@={build.backSlot}"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -456,3 +466,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
