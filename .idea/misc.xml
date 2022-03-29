@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MobileAppDev2/MAD2-Project/app/src/main/res/layout/content_home.xml" value="0.19166666666666668" />
+        <entry key="..\:/MobileAppDev2/MAD2-Project/app/src/main/res/layout/fragment_build.xml" value="0.19166666666666668" />
+        <entry key="..\:/MobileAppDev2/MAD2-Project/app/src/main/res/layout/fragment_buildlist.xml" value="0.19166666666666668" />
+        <entry key="..\:/MobileAppDev2/MAD2-Project/app/src/main/res/layout/fragment_item.xml" value="0.19166666666666668" />
+        <entry key="..\:/MobileAppDev2/MAD2-Project/app/src/main/res/layout/home.xml" value="0.19166666666666668" />
         <entry key="..\:/Year 4/semester2/mobile-app-dev2/CA/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2755208333333333" />
         <entry key="..\:/Year 4/semester2/mobile-app-dev2/CA/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2755208333333333" />
         <entry key="..\:/Year 4/semester2/mobile-app-dev2/CA/app/src/main/res/drawable/side_nav_bar.xml" value="0.14635416666666667" />

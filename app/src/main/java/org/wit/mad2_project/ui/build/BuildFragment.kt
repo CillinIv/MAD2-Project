@@ -15,7 +15,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import org.wit.mad2_project.fragments.BuildFragmentDirections
 import org.wit.mad2_project.models.BuildModel
 
 var newBuildTitle: String = "N/A"

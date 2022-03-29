@@ -1,4 +1,4 @@
-package org.wit.mad2_project.fragments
+package org.wit.mad2_project.ui.item
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

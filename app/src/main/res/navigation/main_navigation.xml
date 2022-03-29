@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/buildFragment"
-        android:name="org.wit.mad2_project.fragments.BuildFragment"
+        android:name="org.wit.mad2_project.ui.build.BuildFragment"
         android:label="Build"
         tools:layout="@layout/fragment_build">
         <action
@@ -57,7 +57,7 @@
     </fragment>
     <fragment
         android:id="@+id/itemFragment"
-        android:name="org.wit.mad2_project.fragments.itemFragment"
+        android:name="org.wit.mad2_project.ui.item.itemFragment"
         android:label="fragment_item"
         tools:layout="@layout/fragment_item">
         <action
