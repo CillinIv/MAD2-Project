@@ -46,7 +46,7 @@
 
     <fragment
         android:id="@+id/buildListFragment"
-        android:name="org.wit.mad2_project.fragments.BuildListFragment"
+        android:name="org.wit.mad2_project.ui.buildlist.BuildListFragment"
         android:label="Builds"
         tools:layout="@layout/fragment_buildlist">
         <action
@@ -75,7 +75,7 @@
     </fragment>
     <fragment
         android:id="@+id/dailyFragment"
-        android:name="org.wit.mad2_project.fragments.DailyFragment"
+        android:name="org.wit.mad2_project.ui.daily.DailyFragment"
         android:label="Dailies"
         tools:layout="@layout/fragment_daily">
         <action
