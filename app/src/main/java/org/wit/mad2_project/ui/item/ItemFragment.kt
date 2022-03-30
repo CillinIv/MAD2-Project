@@ -25,7 +25,6 @@ class itemFragment : Fragment() {
     var newHeadTrait: String = "N/A"
     var newHeadQuality: Int = 3
 
-
     var newShoulderSlot: String = "N/A"
     var newShoulderWeight: String = "N/A"
     var newShoulderEnch: String = "N/A"

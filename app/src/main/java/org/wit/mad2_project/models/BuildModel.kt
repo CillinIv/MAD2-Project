@@ -32,12 +32,6 @@ data class BuildModel(var id: Long = 0,
                       var handTrait: String = "N/A",
                       var handQuality: Int = 3,
 
-                      var gloveSlot: String = "N/A",
-                      var gloveWeight: String = "N/A",
-                      var gloveEnch: String = "N/A",
-                      var gloveTrait: String = "N/A",
-                      var gloveQuality: Int = 3,
-
                       var waistSlot: String = "N/A",
                       var waistWeight: String = "N/A",
                       var waistEnch: String = "N/A",

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
     android:label="New Item"
-    app:startDestination="@id/buildFragment">
+    app:startDestination="@id/buildListFragment">
 
     <fragment
         android:id="@+id/buildFragment"
@@ -80,6 +80,15 @@
         tools:layout="@layout/fragment_daily">
         <action
             android:id="@+id/action_dailyFragment2_to_buildFragment"
-            app:destination="@id/buildFragment" />
+            app:destination="@id/buildFragment" >
+            <argument
+                android:name="name" />
+            <argument
+                android:name="trait" />
+            <argument
+                android:name="glyph" />
+            <argument
+                android:name="quality" />
+        </action>
     </fragment>
 </navigation>

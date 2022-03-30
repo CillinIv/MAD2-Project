@@ -136,12 +136,6 @@ class BuildFragment : Fragment() {
     handTrait = newHandTrait,
     handQuality = newHandQuality,
 
-    gloveSlot = newGloveSlot,
-    gloveWeight = newGloveWeight,
-    gloveEnch = newGloveEnch,
-    gloveTrait = newGloveTrait,
-    gloveQuality = newGloveQuality,
-
     waistSlot = newWaistSlot,
     waistWeight = newWaistWeight,
     waistEnch = newWaistEnch,
@@ -286,6 +280,11 @@ class BuildFragment : Fragment() {
             findNavController().navigate(action)
         }
 
+        fragBinding.saveButton.setOnClickListener {
+            app.buildStore.create(currentBuild)
+            Timber.i("Saving build!")
+        }
+
         return root;
     }
 
@@ -410,83 +409,6 @@ class BuildFragment : Fragment() {
             }
     }
 
-    fun setButtonListener(layout: FragmentBuildBinding) {
-        layout.saveButton.setOnClickListener {
-
-            app.buildStore.create(BuildModel(buildTitle = newBuildTitle,
-                headSlot = newHeadSlot,
-                headWeight = newHeadWeight,
-                headEnch = newHeadEnch,
-                headTrait = newHeadTrait,
-                headQuality = newHeadQuality,
-
-
-                shoulderSlot = newShoulderSlot,
-                shoulderWeight = newShoulderWeight,
-                shoulderEnch = newShoulderEnch,
-                shoulderTrait = newShoulderTrait,
-                shoulderQuality = newShoulderQuality,
-
-                chestSlot = newChestSlot,
-                chestWeight = newChestWeight,
-                chestEnch = newChestEnch,
-                chestTrait = newChestTrait,
-                chestQuality = newChestQuality,
-
-                handSlot = newHandSlot,
-                handWeight = newHandWeight,
-                handEnch = newHandEnch,
-                handTrait = newHandTrait,
-                handQuality = newHandQuality,
-
-                gloveSlot = newGloveSlot,
-                gloveWeight = newGloveWeight,
-                gloveEnch = newGloveEnch,
-                gloveTrait = newGloveTrait,
-                gloveQuality = newGloveQuality,
-
-                waistSlot = newWaistSlot,
-                waistWeight = newWaistWeight,
-                waistEnch = newWaistEnch,
-                waistTrait = newWaistTrait,
-                waistQuality = newWaistQuality,
-
-                bootSlot = newBootSlot,
-                bootWeight = newBootWeight,
-                bootEnch = newBootEnch,
-                bootTrait = newBootTrait,
-                bootQuality = newBootQuality,
-
-                neckSlot = newNeckSlot,
-                neckEnch = newNeckEnch,
-                neckTrait = newNeckTrait,
-                neckQuality = newNeckQuality,
-
-                ring1Slot = newRing1Slot,
-                ring1Ench = newRing1Ench,
-                ring1Trait = newRing1Trait,
-                ring1Quality = newRing1Quality,
-
-                ring2Slot = newRing2Slot,
-                ring2Ench = newRing2Ench,
-                ring2Trait = newRing2Trait,
-                ring2Quality = newRing2Quality,
-
-                frontSlot = newFrontSlot,
-                frontType = newFrontType,
-                frontEnch = newFrontEnch,
-                frontTrait = newFrontTrait,
-                frontQuality = newFrontQuality,
-
-                backSlot = newBackSlot,
-                backType = newBackType,
-                backEnch = newBackEnch,
-                backTrait = newBackTrait,
-                backQuality = newBackQuality,))
-            //TODO Save build
-            Timber.i("Saving build!")
-        }
-    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_build, menu)

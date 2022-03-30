@@ -1,4 +1,6 @@
 package org.wit.mad2_project.ui.item
 
-class ItemViewModel {
+import androidx.lifecycle.ViewModel
+
+class ItemViewModel  : ViewModel() {
 }
