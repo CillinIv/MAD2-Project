@@ -1,4 +1,4 @@
-package org.wit.mad2_project.models
+/*package org.wit.mad2_project.models
 import timber.log.Timber
 
 var lastId = 0L
@@ -31,3 +31,4 @@ object BuildMemStore : BuildStore {
         builds.forEach { Timber.v("Donate ${it}") }
     }
 }
+*/

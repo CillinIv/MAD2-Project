@@ -35,13 +35,19 @@
             app:argType="string" />
         <argument
             android:name="quality"
-            app:argType="integer" />
+            app:argType="string" />
         <argument
             android:name="weight"
             app:argType="string" />
         <argument
             android:name="build"
             app:argType="org.wit.mad2_project.models.BuildModel" />
+        <action
+            android:id="@+id/action_buildFragment_to_buildListFragment2"
+            app:destination="@id/buildListFragment" />
+        <action
+            android:id="@+id/action_buildFragment_to_buildListFragment3"
+            app:destination="@id/buildListFragment" />
     </fragment>
 
     <fragment
@@ -54,6 +60,10 @@
             app:destination="@id/buildFragment"
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:exitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_buildListFragment_to_buildDetailFragment"
+            app:destination="@id/buildDetailFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/itemFragment"
@@ -90,5 +100,24 @@
             <argument
                 android:name="quality" />
         </action>
+    </fragment>
+
+    <activity
+        android:id="@+id/login"
+        android:name="org.wit.mad2_project.ui.auth.Login"
+        android:label="Login" />
+    <activity
+        android:id="@+id/home2"
+        android:name="org.wit.mad2_project.activities.Home"
+        android:label="Home" />
+    <fragment
+        android:id="@+id/buildDetailFragment"
+        android:name="org.wit.mad2_project.ui.builddetails.BuildDetailFragment"
+        android:label="fragment_build_detail"
+        tools:layout="@layout/fragment_build_detail" >
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>

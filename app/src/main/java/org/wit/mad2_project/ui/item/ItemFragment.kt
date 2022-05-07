@@ -43,12 +43,6 @@ class itemFragment : Fragment() {
     var newHandTrait: String = "N/A"
     var newHandQuality: Int = 3
 
-    var newGloveSlot: String = "N/A"
-    var newGloveWeight: String = "N/A"
-    var newGloveEnch: String = "N/A"
-    var newGloveTrait: String = "N/A"
-    var newGloveQuality: Int = 3
-
     var newWaistSlot: String = "N/A"
     var newWaistWeight: String = "N/A"
     var newWaistEnch: String = "N/A"
@@ -88,7 +82,7 @@ class itemFragment : Fragment() {
     var newBackTrait: String = "N/A"
     var newBackQuality: Int = 3
 
-    private var currentBuild = BuildModel(-1, newBuildTitle,
+    private var currentBuild = BuildModel("1", newBuildTitle,
         headSlot = newHeadSlot,
         headWeight = newHeadWeight,
         headEnch = newHeadEnch,
@@ -113,12 +107,6 @@ class itemFragment : Fragment() {
         handEnch = newHandEnch,
         handTrait = newHandTrait,
         handQuality = newHandQuality,
-
-        gloveSlot = newGloveSlot,
-        gloveWeight = newGloveWeight,
-        gloveEnch = newGloveEnch,
-        gloveTrait = newGloveTrait,
-        gloveQuality = newGloveQuality,
 
         waistSlot = newWaistSlot,
         waistWeight = newWaistWeight,
@@ -212,9 +200,6 @@ class itemFragment : Fragment() {
             fragBinding.weight.isEnabled = false
         }
 
-
-
-
         ArrayAdapter.createFromResource(
             requireContext(),
             spinnerArrayTrait,
@@ -264,10 +249,10 @@ class itemFragment : Fragment() {
 
             if(type == "armor"){
                 val weight: String = fragBinding.weight.toString()
-                val action = itemFragmentDirections.actionItemFragmentToBuildFragment(name, trait, glyph, quality, weight, currentBuild)
+                val action = itemFragmentDirections.actionItemFragmentToBuildFragment(name, trait, glyph, quality.toString(), weight, currentBuild)
                 findNavController().navigate(action)
             }else{
-                val action = itemFragmentDirections.actionItemFragmentToBuildFragment(name, trait, glyph, quality, "", currentBuild)
+                val action = itemFragmentDirections.actionItemFragmentToBuildFragment(name, trait, glyph, quality.toString(), "", currentBuild)
                 findNavController().navigate(action)
             }
 

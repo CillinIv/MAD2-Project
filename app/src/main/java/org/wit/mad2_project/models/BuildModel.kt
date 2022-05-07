@@ -2,9 +2,13 @@ package org.wit.mad2_project.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import com.google.firebase.database.Exclude
+import com.google.firebase.database.IgnoreExtraProperties
+import org.wit.mad2_project.firebase.FirebaseDBManager.database
 
+@IgnoreExtraProperties
 @Parcelize
-data class BuildModel(var id: Long = 0,
+data class BuildModel(var id: String? = "",
                       var buildTitle: String = "N/A",
 
                       var headSlot: String = "N/A",
@@ -77,6 +81,86 @@ data class BuildModel(var id: Long = 0,
                       var backTrait: String = "N/A",
                       var backQuality: Int = 3,
 
-
+                      var email: String = "joe@bloggs.com",
                       ) : Parcelable
+{
+    @Exclude
+    fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "id" to id,
+            "buildTitle" to buildTitle,
+
+            "headSlot" to headSlot,
+            "headWeight" to headWeight,
+            "headEnch" to headEnch,
+            "headTrait" to headTrait,
+            "headQuality" to headQuality,
+
+            "shoulderSlot" to shoulderSlot,
+            "shoulderWeight" to shoulderWeight,
+            "shoulderEnch" to shoulderEnch,
+            "shoulderTrait" to shoulderTrait,
+            "shoulderQuality" to shoulderQuality,
+
+            "chestSlot" to chestSlot,
+            "chestWeight" to chestWeight,
+            "chestEnch" to chestEnch,
+            "chestTrait" to chestTrait,
+            "chestQuality" to chestQuality,
+
+            "handSlot" to handSlot,
+            "handWeight" to handWeight,
+            "handEnch" to handEnch,
+            "handTrait" to handTrait,
+            "handQuality" to handQuality,
+
+            "waistSlot" to waistSlot,
+            "waistWeight" to waistWeight,
+            "waistEnch" to waistEnch,
+            "waistTrait" to waistTrait,
+            "waistQuality" to waistQuality,
+
+            "legSlot" to legSlot,
+            "legWeight" to legWeight,
+            "legEnch" to legEnch,
+            "legTrait" to legTrait,
+            "legQuality" to legQuality,
+
+            "bootSlot" to bootSlot,
+            "bootWeight" to bootWeight,
+            "bootEnch" to bootEnch,
+            "bootTrait" to bootTrait,
+            "bootQuality" to bootQuality,
+
+            "neckSlot" to neckSlot,
+            "neckEnch" to neckEnch,
+            "neckTrait" to neckTrait,
+            "neckQuality" to neckQuality,
+
+            "ring1Slot" to ring1Slot,
+            "ring1Ench" to ring1Ench,
+            "ring1Trait" to ring1Trait,
+            "ring1Quality" to ring1Quality,
+
+            "ring2Slot" to ring2Slot,
+            "ring2Ench" to ring2Ench,
+            "ring2Trait" to ring2Trait,
+            "ring2Quality" to ring2Quality,
+
+            "frontSlot" to frontSlot,
+            "frontType" to frontType,
+            "frontEnch" to frontEnch,
+            "frontTrait" to frontTrait,
+            "frontQuality" to frontQuality,
+
+            "backSlot" to backSlot,
+            "backType" to backType,
+            "backEnch" to backEnch,
+            "backTrait" to backTrait,
+            "backQuality" to backQuality,
+
+            "email" to email
+        )
+    }
+}
 

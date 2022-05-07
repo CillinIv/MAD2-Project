@@ -1,3 +1,4 @@
+/*
 package org.wit.mad2_project.models
 
 import android.content.Context
@@ -34,7 +35,7 @@ class BuildJSONStore (private val context : Context){
         return builds
     }
 
-    fun findOne(id: Long) : BuildModel? {
+    fun findOne(id: String?) : BuildModel? {
         var foundBuild: BuildModel? = builds.find { p -> p.id == id }
         return foundBuild
     }
@@ -150,3 +151,4 @@ class BuildJSONStore (private val context : Context){
 
 
 }
+*/

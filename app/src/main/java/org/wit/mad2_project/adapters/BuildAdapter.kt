@@ -7,13 +7,18 @@ import org.wit.mad2_project.R
 import org.wit.mad2_project.databinding.CardBuildBinding
 import org.wit.mad2_project.models.BuildModel
 
-class BuildAdapter constructor(private var builds: List<BuildModel>)
+interface BuildClickListener {
+    fun onBuildClick(build: BuildModel)
+}
+
+class BuildAdapter constructor(private var builds: List<BuildModel>,
+                               private val listener: BuildClickListener)
     : RecyclerView.Adapter<BuildAdapter.MainHolder>() {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         val binding = CardBuildBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
-
         return MainHolder(binding)
     }
 
@@ -27,9 +32,10 @@ class BuildAdapter constructor(private var builds: List<BuildModel>)
     inner class MainHolder(val binding : CardBuildBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(build: BuildModel) {
-            //binding.paymentamount.text = build.amount.toString()
             //binding.buildTitle.text = build.paymentmethod
             binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
+            binding.root.setOnClickListener { listener.onBuildClick(build) }
+            //binding.executePendingBindings()
         }
     }
 }

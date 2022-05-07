@@ -10,12 +10,13 @@ import org.wit.mad2_project.databinding.FragmentBuildBinding
 import org.wit.mad2_project.main.BuildApp
 import timber.log.Timber
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import org.wit.mad2_project.models.BuildModel
+import org.wit.mad2_project.ui.auth.LoggedInViewModel
+import androidx.fragment.app.activityViewModels
+import org.wit.mad2_project.ui.buildlist.BuildListViewModel
 
 var newBuildTitle: String = "N/A"
 
@@ -108,9 +109,12 @@ class BuildFragment : Fragment() {
     private var _fragBinding: FragmentBuildBinding? = null
     private val fragBinding get() = _fragBinding!!
 
+    private val buildListViewModel: BuildListViewModel by activityViewModels()
+    private val loggedInViewModel : LoggedInViewModel by activityViewModels()
+
     private lateinit var buildViewModel: BuildViewModel
 
-    private var currentBuild = BuildModel(-1, newBuildTitle,
+    private var currentBuild = BuildModel("1", newBuildTitle,
     headSlot = newHeadSlot,
     headWeight = newHeadWeight,
     headEnch = newHeadEnch,
@@ -281,7 +285,10 @@ class BuildFragment : Fragment() {
         }
 
         fragBinding.saveButton.setOnClickListener {
-            app.buildStore.create(currentBuild)
+
+            currentBuild.email = loggedInViewModel.liveFirebaseUser.value?.email!!
+            buildViewModel.addBuild(loggedInViewModel.liveFirebaseUser, currentBuild)
+
             Timber.i("Saving build!")
         }
 
@@ -426,7 +433,5 @@ class BuildFragment : Fragment() {
 
         }
     }
-
-
 
 }
