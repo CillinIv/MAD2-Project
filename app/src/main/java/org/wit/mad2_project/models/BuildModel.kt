@@ -8,7 +8,7 @@ import org.wit.mad2_project.firebase.FirebaseDBManager.database
 
 @IgnoreExtraProperties
 @Parcelize
-data class BuildModel(var id: String? = "",
+data class BuildModel(var uid: String = "",
                       var buildTitle: String = "N/A",
 
                       var headSlot: String = "N/A",
@@ -87,7 +87,7 @@ data class BuildModel(var id: String? = "",
     @Exclude
     fun toMap(): Map<String, Any?> {
         return mapOf(
-            "id" to id,
+            "uid" to uid,
             "buildTitle" to buildTitle,
 
             "headSlot" to headSlot,

@@ -7,7 +7,7 @@ import org.wit.mad2_project.firebase.FirebaseDBManager
 import org.wit.mad2_project.models.BuildModel
 import timber.log.Timber
 
-class BuildDetailViewModel {
+class BuildDetailViewModel : ViewModel() {
     private val build = MutableLiveData<BuildModel>()
 
     var observableBuild: LiveData<BuildModel>
@@ -16,24 +16,14 @@ class BuildDetailViewModel {
 
     fun getBuild(userid:String, id: String) {
         try {
-
             FirebaseDBManager.findById(userid, id, build)
             Timber.i("Detail getBuild() Success : ${
-                build.value.toString()}")
+                build.value?.toString()}")
         }
         catch (e: Exception) {
-            Timber.i("Detail getDonation() Error : $e.message")
+            Timber.i("Detail getBuild() Error : $e.message")
         }
     }
 
-    fun updateBuild(userid:String, id: String,build: BuildModel) {
-        try {
-            FirebaseDBManager.update(userid, id, build)
-            Timber.i("Detail update() Success : $build")
-        }
-        catch (e: Exception) {
-            Timber.i("Detail update() Error : $e.message")
-        }
-    }
 
 }

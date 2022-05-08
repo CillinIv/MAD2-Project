@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import org.wit.mad2_project.models.BuildModel
 import org.wit.mad2_project.ui.auth.LoggedInViewModel
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.navArgs
 import org.wit.mad2_project.ui.buildlist.BuildListViewModel
 
 var newBuildTitle: String = "N/A"
@@ -109,6 +110,8 @@ class BuildFragment : Fragment() {
     private var _fragBinding: FragmentBuildBinding? = null
     private val fragBinding get() = _fragBinding!!
 
+    private val args by navArgs<BuildFragmentArgs>()
+
     private val buildListViewModel: BuildListViewModel by activityViewModels()
     private val loggedInViewModel : LoggedInViewModel by activityViewModels()
 
@@ -201,6 +204,7 @@ class BuildFragment : Fragment() {
         })
 
         fragBinding.headOpt.setOnClickListener(){
+            currentBuild.buildTitle = fragBinding.buildTitleInput.text.toString()
             var type: String = "armor"
             var slot : String = "head"
             val action = BuildFragmentDirections.actionBuildFragmentToItemFragment(type,slot,currentBuild)
@@ -208,6 +212,7 @@ class BuildFragment : Fragment() {
         }
 
         fragBinding.shoulderOpt.setOnClickListener(){
+            currentBuild.buildTitle = fragBinding.buildTitleInput.text.toString()
             var type: String = "armor"
             var slot : String = "shoulder"
             val action = BuildFragmentDirections.actionBuildFragmentToItemFragment(type,slot,currentBuild)
@@ -215,6 +220,7 @@ class BuildFragment : Fragment() {
         }
 
         fragBinding.chestOpt.setOnClickListener(){
+            currentBuild.buildTitle = fragBinding.buildTitleInput.text.toString()
             var type: String = "armor"
             var slot : String = "chest"
             val action = BuildFragmentDirections.actionBuildFragmentToItemFragment(type,slot,currentBuild)
@@ -222,6 +228,7 @@ class BuildFragment : Fragment() {
         }
 
         fragBinding.handOpt.setOnClickListener(){
+            currentBuild.buildTitle = fragBinding.buildTitleInput.text.toString()
             var type: String = "armor"
             var slot : String = "hand"
             val action = BuildFragmentDirections.actionBuildFragmentToItemFragment(type,slot,currentBuild)
@@ -229,6 +236,7 @@ class BuildFragment : Fragment() {
         }
 
         fragBinding.waistOpt.setOnClickListener(){
+            currentBuild.buildTitle = fragBinding.buildTitleInput.text.toString()
             var type: String = "armor"
             var slot : String = "waist"
             val action = BuildFragmentDirections.actionBuildFragmentToItemFragment(type,slot,currentBuild)
@@ -236,6 +244,7 @@ class BuildFragment : Fragment() {
         }
 
         fragBinding.legOpt.setOnClickListener(){
+            currentBuild.buildTitle = fragBinding.buildTitleInput.text.toString()
             var type: String = "armor"
             var slot : String = "leg"
             val action = BuildFragmentDirections.actionBuildFragmentToItemFragment(type,slot,currentBuild)
@@ -243,6 +252,7 @@ class BuildFragment : Fragment() {
         }
 
         fragBinding.bootsOpt.setOnClickListener(){
+            currentBuild.buildTitle = fragBinding.buildTitleInput.text.toString()
             var type: String = "armor"
             var slot : String = "boots"
             val action = BuildFragmentDirections.actionBuildFragmentToItemFragment(type,slot,currentBuild)
@@ -250,6 +260,7 @@ class BuildFragment : Fragment() {
         }
 
         fragBinding.neckOpt.setOnClickListener(){
+            currentBuild.buildTitle = fragBinding.buildTitleInput.text.toString()
             var type: String = "jewel"
             var slot : String = "neck"
             val action = BuildFragmentDirections.actionBuildFragmentToItemFragment(type,slot,currentBuild)
@@ -257,6 +268,7 @@ class BuildFragment : Fragment() {
         }
 
         fragBinding.ring1Opt.setOnClickListener(){
+            currentBuild.buildTitle = fragBinding.buildTitleInput.text.toString()
             var type: String = "jewel"
             var slot : String = "ring1"
             val action = BuildFragmentDirections.actionBuildFragmentToItemFragment(type,slot,currentBuild)
@@ -264,6 +276,7 @@ class BuildFragment : Fragment() {
         }
 
         fragBinding.ring2Opt.setOnClickListener(){
+            currentBuild.buildTitle = fragBinding.buildTitleInput.text.toString()
             var type: String = "jewel"
             var slot : String = "ring2"
             val action = BuildFragmentDirections.actionBuildFragmentToItemFragment(type,slot,currentBuild)
@@ -271,6 +284,7 @@ class BuildFragment : Fragment() {
         }
 
         fragBinding.wep1Opt.setOnClickListener(){
+            currentBuild.buildTitle = fragBinding.buildTitleInput.text.toString()
             var type: String = "wep"
             var slot : String = "wep1"
             val action = BuildFragmentDirections.actionBuildFragmentToItemFragment(type,slot,currentBuild)
@@ -278,6 +292,7 @@ class BuildFragment : Fragment() {
         }
 
         fragBinding.wep2Opt.setOnClickListener(){
+            currentBuild.buildTitle = fragBinding.buildTitleInput.text.toString()
             var type: String = "wep"
             var slot : String = "wep2"
             val action = BuildFragmentDirections.actionBuildFragmentToItemFragment(type, slot,currentBuild)
@@ -285,9 +300,12 @@ class BuildFragment : Fragment() {
         }
 
         fragBinding.saveButton.setOnClickListener {
-
+            currentBuild.buildTitle = fragBinding.buildTitleInput.text.toString()
             currentBuild.email = loggedInViewModel.liveFirebaseUser.value?.email!!
             buildViewModel.addBuild(loggedInViewModel.liveFirebaseUser, currentBuild)
+
+            val action = BuildFragmentDirections.actionBuildFragmentToBuildListFragment()
+            findNavController().navigate(action)
 
             Timber.i("Saving build!")
         }
@@ -299,93 +317,18 @@ class BuildFragment : Fragment() {
         super.onDestroyView()
         _fragBinding = null
     }
-    var one = 0
+
     override fun onResume() {
         super.onResume()
-        val bundle = arguments ?: return
 
-        if(one == 0){
-            one++
+        if(args.build == null){
             return
         }
 
-        currentBuild = bundle?.getParcelable("build")!!
 
-        if(bundle?.getString("slot") == "head"){
-            currentBuild.headSlot = bundle?.getString("name").toString()
-            currentBuild.headWeight = bundle?.getString("weight").toString()
-            currentBuild.headEnch = bundle?.getString("glyph").toString()
-            currentBuild.headTrait = bundle?.getString("trait").toString()
-            currentBuild.headQuality = bundle?.getInt("quality")!!
-        }else if(bundle?.getString("slot") == "shoulder"){
-            currentBuild.shoulderSlot = bundle?.getString("name").toString()
-            currentBuild.shoulderWeight = bundle?.getString("weight").toString()
-            currentBuild.shoulderEnch = bundle?.getString("glyph").toString()
-            currentBuild.shoulderTrait = bundle?.getString("trait").toString()
-            currentBuild.shoulderQuality = bundle?.getInt("quality")!!
-        }else if(bundle?.getString("slot") == "chest"){
-            currentBuild.chestSlot = bundle?.getString("name").toString()
-            currentBuild.chestWeight = bundle?.getString("weight").toString()
-            currentBuild.chestEnch = bundle?.getString("glyph").toString()
-            currentBuild.chestTrait = bundle?.getString("trait").toString()
-            currentBuild.chestQuality = bundle?.getInt("quality")!!
-        }else if(bundle?.getString("slot") == "hand"){
-            currentBuild.handSlot = bundle?.getString("name").toString()
-            currentBuild.handWeight = bundle?.getString("weight").toString()
-            currentBuild.handEnch = bundle?.getString("glyph").toString()
-            currentBuild.handTrait = bundle?.getString("trait").toString()
-            currentBuild.handQuality = bundle?.getInt("quality")!!
-        }else if(bundle?.getString("slot") == "waist"){
-            currentBuild.waistSlot = bundle?.getString("name").toString()
-            currentBuild.waistWeight = bundle?.getString("weight").toString()
-            currentBuild.waistEnch = bundle?.getString("glyph").toString()
-            currentBuild.waistTrait = bundle?.getString("trait").toString()
-            currentBuild.waistQuality = bundle?.getInt("quality")!!
-        }else if(bundle?.getString("slot") == "leg"){
-            currentBuild.legSlot = bundle?.getString("name").toString()
-            currentBuild.legWeight = bundle?.getString("weight").toString()
-            currentBuild.legEnch = bundle?.getString("glyph").toString()
-            currentBuild.legTrait = bundle?.getString("trait").toString()
-            currentBuild.legQuality = bundle?.getInt("quality")!!
-        }else if(bundle?.getString("slot") == "boots"){
-            currentBuild.bootSlot = bundle?.getString("name").toString()
-            currentBuild.bootWeight = bundle?.getString("weight").toString()
-            currentBuild.bootEnch = bundle?.getString("glyph").toString()
-            currentBuild.bootTrait = bundle?.getString("trait").toString()
-            currentBuild.bootQuality = bundle?.getInt("quality")!!
-        }else if(bundle?.getString("slot") == "neck"){
-            currentBuild.neckSlot = bundle?.getString("name").toString()
-            //currentBuild.bootWeight = bundle?.getString("weight").toString()
-            currentBuild.neckEnch = bundle?.getString("glyph").toString()
-            currentBuild.neckTrait = bundle?.getString("trait").toString()
-            currentBuild.neckQuality = bundle?.getInt("quality")!!
-        }else if(bundle?.getString("slot") == "ring1"){
-            currentBuild.ring1Slot = bundle?.getString("name").toString()
-            //currentBuild.bootWeight = bundle?.getString("weight").toString()
-            currentBuild.ring1Ench = bundle?.getString("glyph").toString()
-            currentBuild.ring1Trait = bundle?.getString("trait").toString()
-            currentBuild.ring1Quality = bundle?.getInt("quality")!!
-        }else if(bundle?.getString("slot") == "ring2"){
-            currentBuild.ring2Slot = bundle?.getString("name").toString()
-            //currentBuild.bootWeight = bundle?.getString("weight").toString()
-            currentBuild.ring2Ench = bundle?.getString("glyph").toString()
-            currentBuild.ring2Trait = bundle?.getString("trait").toString()
-            currentBuild.ring2Quality = bundle?.getInt("quality")!!
-        }else if(bundle?.getString("slot") == "wep1"){
-            currentBuild.frontSlot = bundle?.getString("name").toString()
-            currentBuild.frontType = bundle?.getString("weight").toString()
-            currentBuild.frontEnch = bundle?.getString("glyph").toString()
-            currentBuild.frontTrait = bundle?.getString("trait").toString()
-            currentBuild.frontQuality = bundle?.getInt("quality")!!
-        }else if(bundle?.getString("slot") == "wep2"){
-            currentBuild.backSlot = bundle?.getString("name").toString()
-            currentBuild.backType = bundle?.getString("weight").toString()
-            currentBuild.backEnch = bundle?.getString("glyph").toString()
-            currentBuild.backTrait = bundle?.getString("trait").toString()
-            currentBuild.backQuality = bundle?.getInt("quality")!!
-        }
+        currentBuild = args.build!!
 
-
+        fragBinding.buildTitleInput.setText(currentBuild.buildTitle)
 
         fragBinding.itemHeadView.text = currentBuild.headSlot
         fragBinding.itemShoulderView.text = currentBuild.shoulderSlot
@@ -394,18 +337,14 @@ class BuildFragment : Fragment() {
         fragBinding.itemHandsView.text = currentBuild.handSlot
         fragBinding.itemLegView.text = currentBuild.legSlot
         fragBinding.itemBootsView.text = currentBuild.bootSlot
-        //fragBinding.item.text = currentBuild.headSlot
-        //fragBinding.itemHeadView.text = currentBuild.headSlot
-        //fragBinding.itemHeadView.text = currentBuild.headSlot
+
+        fragBinding.itemNeckView.text = currentBuild.neckSlot
+        fragBinding.itemRing1View.text = currentBuild.ring1Slot
+        fragBinding.itemRing2View.text = currentBuild.ring2Slot
+
         fragBinding.itemFrontWepView.text = currentBuild.frontSlot
         fragBinding.itemBackWepView.text = currentBuild.backSlot
 
-
-
-
-
-
-        // TODO add in build fields
     }
 
     companion object {

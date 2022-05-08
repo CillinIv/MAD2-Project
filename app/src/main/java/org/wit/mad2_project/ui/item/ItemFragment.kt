@@ -242,21 +242,115 @@ class itemFragment : Fragment() {
         //numberPicker.setDisplayedValues(quality)
 
         fragBinding.saveItem.setOnClickListener() {
-            val name: String = fragBinding.itemName.toString()
-            val trait: String = fragBinding.trait.toString()
-            val glyph: String = fragBinding.glyph.toString()
+            val name: String = fragBinding.itemHead.text.toString()
+            val trait: String = fragBinding.trait.selectedItem.toString()
+            val glyph: String = fragBinding.glyph.selectedItem.toString()
             val quality: Int = fragBinding.quality.value
 
-            if(type == "armor"){
-                val weight: String = fragBinding.weight.toString()
-                val action = itemFragmentDirections.actionItemFragmentToBuildFragment(name, trait, glyph, quality.toString(), weight, currentBuild)
-                findNavController().navigate(action)
-            }else{
-                val action = itemFragmentDirections.actionItemFragmentToBuildFragment(name, trait, glyph, quality.toString(), "", currentBuild)
-                findNavController().navigate(action)
+
+            if(slot == "head"){
+                val weight: String = fragBinding.weight.selectedItem.toString()
+                currentBuild.headSlot = name
+                currentBuild.headTrait = trait
+                currentBuild.headEnch = glyph
+                currentBuild.headQuality = quality
+                currentBuild.headWeight = weight
+            }
+
+            if(slot == "shoulder"){
+                val weight: String = fragBinding.weight.selectedItem.toString()
+                currentBuild.shoulderSlot = name
+                currentBuild.shoulderTrait = trait
+                currentBuild.shoulderEnch = glyph
+                currentBuild.shoulderQuality = quality
+                currentBuild.shoulderWeight = weight
+            }
+
+            if(slot == "chest"){
+                val weight: String = fragBinding.weight.selectedItem.toString()
+                currentBuild.chestSlot = name
+                currentBuild.chestTrait = trait
+                currentBuild.chestEnch = glyph
+                currentBuild.chestQuality = quality
+                currentBuild.chestWeight = weight
+            }
+
+            if(slot == "hand"){
+                val weight: String = fragBinding.weight.selectedItem.toString()
+                currentBuild.handSlot = name
+                currentBuild.handTrait = trait
+                currentBuild.handEnch = glyph
+                currentBuild.handQuality = quality
+                currentBuild.handWeight = weight
+            }
+
+            if(slot == "waist"){
+                val weight: String = fragBinding.weight.selectedItem.toString()
+                currentBuild.waistSlot = name
+                currentBuild.waistTrait = trait
+                currentBuild.waistEnch = glyph
+                currentBuild.waistQuality = quality
+                currentBuild.waistWeight = weight
+            }
+
+            if(slot == "leg"){
+                val weight: String = fragBinding.weight.selectedItem.toString()
+                currentBuild.legSlot = name
+                currentBuild.legTrait = trait
+                currentBuild.legEnch = glyph
+                currentBuild.legQuality = quality
+                currentBuild.legWeight = weight
+            }
+
+            if(slot == "boots"){
+                val weight: String = fragBinding.weight.selectedItem.toString()
+                currentBuild.bootSlot = name
+                currentBuild.bootTrait = trait
+                currentBuild.bootEnch = glyph
+                currentBuild.bootQuality = quality
+                currentBuild.bootWeight = weight
+            }
+
+            if(slot == "neck"){
+                currentBuild.neckSlot = name
+                currentBuild.neckTrait = trait
+                currentBuild.neckEnch = glyph
+                currentBuild.neckQuality = quality
+            }
+
+            if(slot == "ring1"){
+                currentBuild.ring1Slot = name
+                currentBuild.ring1Trait = trait
+                currentBuild.ring1Ench = glyph
+                currentBuild.ring1Quality = quality
+            }
+
+            if(slot == "ring2"){
+                currentBuild.ring2Slot = name
+                currentBuild.ring2Trait = trait
+                currentBuild.ring2Ench = glyph
+                currentBuild.ring2Quality = quality
+            }
+
+            if(slot == "wep1"){
+                currentBuild.frontSlot = name
+                currentBuild.frontTrait = trait
+                currentBuild.frontEnch = glyph
+                currentBuild.frontQuality = quality
+            }
+
+            if(slot == "wep2"){
+                currentBuild.backSlot = name
+                currentBuild.backTrait = trait
+                currentBuild.backEnch = glyph
+                currentBuild.backQuality = quality
             }
 
 
+
+
+            val action = itemFragmentDirections.actionItemFragmentToBuildFragment(currentBuild)//name, trait, glyph, quality.toString(), "", currentBuild)
+            findNavController().navigate(action)
 
         }
 

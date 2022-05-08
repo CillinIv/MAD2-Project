@@ -11,11 +11,11 @@ import timber.log.Timber
 
 class BuildListViewModel : ViewModel() {
 
-    private val donationsList =
+    private val buildsList =
         MutableLiveData<List<BuildModel>>()
 
-    val observableDonationsList: LiveData<List<BuildModel>>
-        get() = donationsList
+    val observableBuildList: LiveData<List<BuildModel>>
+        get() = buildsList
 
     var liveFirebaseUser = MutableLiveData<FirebaseUser>()
 
@@ -23,11 +23,11 @@ class BuildListViewModel : ViewModel() {
 
     fun load() {
         try {
-            FirebaseDBManager.findAll(liveFirebaseUser.value?.email!!, donationsList)
-            Timber.i("Report Load Success : ${donationsList.value.toString()}")
+            FirebaseDBManager.findAll(liveFirebaseUser.value?.uid!!, buildsList)
+            println("Build Load Success : ${buildsList.value.toString()}")
         }
         catch (e: Exception) {
-            Timber.i("Report Load Error : $e.message")
+            println("Build Load Error : $e.message")
         }
     }
 

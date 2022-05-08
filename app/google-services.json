@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "1045686297336",
-    "project_id": "mad-project2-2aee3",
-    "storage_bucket": "mad-project2-2aee3.appspot.com"
+    "project_number": "613400285466",
+    "firebase_url": "https://mad2-project-e8f70-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "mad2-project-e8f70",
+    "storage_bucket": "mad2-project-e8f70.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1045686297336:android:2c8af8e1659b14db1a510d",
+        "mobilesdk_app_id": "1:613400285466:android:e9cc1a1a1d4f1817cd9ca3",
         "android_client_info": {
           "package_name": "org.wit.mad2_project"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1045686297336-tffnf7khba1nt48slocuf43d704c40dn.apps.googleusercontent.com",
+          "client_id": "613400285466-n52h3u84f3cchkqcfuk8ntko1tj6j8h2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAMOSR-KZpWF1ut3zYnlDAItkJspphzm-I"
+          "current_key": "AIzaSyDtAUZRRSaUDrWZAx7hFIROUc10qQ8zxUw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1045686297336-tffnf7khba1nt48slocuf43d704c40dn.apps.googleusercontent.com",
+              "client_id": "613400285466-n52h3u84f3cchkqcfuk8ntko1tj6j8h2.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

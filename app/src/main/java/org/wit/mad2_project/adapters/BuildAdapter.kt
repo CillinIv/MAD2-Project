@@ -11,7 +11,7 @@ interface BuildClickListener {
     fun onBuildClick(build: BuildModel)
 }
 
-class BuildAdapter constructor(private var builds: List<BuildModel>,
+class BuildAdapter constructor(private var builds: ArrayList<BuildModel>,
                                private val listener: BuildClickListener)
     : RecyclerView.Adapter<BuildAdapter.MainHolder>() {
 
@@ -27,12 +27,17 @@ class BuildAdapter constructor(private var builds: List<BuildModel>,
         holder.bind(build)
     }
 
+    fun removeAt(position: Int) {
+        builds.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
     override fun getItemCount(): Int = builds.size
 
     inner class MainHolder(val binding : CardBuildBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(build: BuildModel) {
-            //binding.buildTitle.text = build.paymentmethod
+            binding.build = build
             binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
             binding.root.setOnClickListener { listener.onBuildClick(build) }
             //binding.executePendingBindings()

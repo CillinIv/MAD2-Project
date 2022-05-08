@@ -17,10 +17,10 @@ object FirebaseDBManager : BuildStore {
 
     override fun findAll(userid: String, buildList: MutableLiveData<List<BuildModel>>) {
 
-        database.child("user-donations").child(userid)
+        database.child("user-builds").child(userid)
             .addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(error: DatabaseError) {
-                    Timber.i("Firebase Donation error : ${error.message}")
+                    Timber.i("Firebase Build error : ${error.message}")
                 }
 
                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -38,11 +38,11 @@ object FirebaseDBManager : BuildStore {
             })
     }
 
-    override fun findById(userid: String, buildid: String, builds: MutableLiveData<BuildModel>) {
+    override fun findById(userid: String, buildid: String, build: MutableLiveData<BuildModel>) {
 
-        database.child("user-donations").child(userid)
+        database.child("user-builds").child(userid)
             .child(buildid).get().addOnSuccessListener {
-                builds.value = it.getValue(BuildModel::class.java)
+                build.value = it.getValue(BuildModel::class.java)
                 Timber.i("firebase Got value ${it.value}")
             }.addOnFailureListener{
                 Timber.e("firebase Error getting data $it")
@@ -58,7 +58,7 @@ object FirebaseDBManager : BuildStore {
             Timber.i("Firebase Error : Key Empty")
             return
         }
-        build.id = key
+        build.uid = key
         val donationValues = build.toMap()
 
         val childAdd = HashMap<String, Any>()
